@@ -1,0 +1,182 @@
+﻿<Window x:Class="pujcovnaHudebnichNastroju.PujcovnaNastroju"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pujcovnaHudebnichNastroju"
+        mc:Ignorable="d"
+        Title="PujcovnaNastroju" Height="900" Width="1500" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl FontSize="20">
+            <TabItem Header="Nástroje">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="lsvNastroje" FontSize="20" SelectionChanged="lsvNastroje_SelectionChanged" Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID"  Width="100" DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Název" Width="150" DisplayMemberBinding="{Binding nazev}"/>
+                                <GridViewColumn Header="Typ" Width="150" DisplayMemberBinding="{Binding typ}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TabControl Grid.Column="1">
+                        <TabItem Header="Přidání">
+                            <Grid Background="#FFE5E5E5">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Název" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="pridavaniNazev"  FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Typ" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182"/>
+                                    <TextBox x:Name="pridavaniTyp" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <Button x:Name="btnPridat" FontSize="40" Content="Přidat" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnPridat_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Mazání">
+                            <Grid Background="#FFE5E5E5">
+                                <Button x:Name="btnSmazat" FontSize="40" Content="Smazat" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="120" Width="260" Click="btnSmazat_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Editace">
+                            <Grid Background="#FFE5E5E5">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Název" VerticalAlignment="Top" Grid.Column="1"/>
+                                    <TextBox x:Name="editaceNazev"  FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Typ" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182" Grid.Column="1"/>
+                                    <TextBox x:Name="editaceTyp" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
+                                    <Button x:Name="btnEdit" FontSize="40" Content="Editovat" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Click="btnEdit_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zákazníci">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="lsvZakaznici" FontSize="20" Grid.Column="0" SelectionChanged="lsvZakaznici_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID"  Width="100" DisplayMemberBinding="{Binding id}"/>
+                                <GridViewColumn Header="Jméno" Width="150" DisplayMemberBinding="{Binding jmeno}"/>
+                                <GridViewColumn Header="Příjmení" Width="150" DisplayMemberBinding="{Binding prijmeni}"/>
+                                <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding telefon}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TabControl Grid.Column="1">
+                        <TabItem Header="Přidání">
+                            <Grid Background="#FFE5E5E5">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="pridavaniJmeno"  FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Příjmení" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182"/>
+                                    <TextBox x:Name="pridavaniPrijmeni" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182"/>
+                                    <TextBox x:Name="pridavaniTelefon" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <Button x:Name="btnPridatZakaznik" FontSize="40" Content="Přidat" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnPridatZakaznik_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Mazání">
+                            <Grid Background="#FFE5E5E5">
+                                <Button x:Name="btnSmazatZakaznik" FontSize="40" Content="Smazat" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="120" Width="260" Click="btnSmazatZakaznik_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Editace">
+                            <Grid Background="#FFE5E5E5">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="editaceJmeno"  FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Příjmení" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182"/>
+                                    <TextBox x:Name="editacePrijmeni" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <TextBlock FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" RenderTransformOrigin="1.591,0.182"/>
+                                    <TextBox x:Name="editaceTelefon" FontSize="20" Margin="0,0,0,75" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                                    <Button x:Name="btnEditZakaznik" FontSize="40" Content="Editovat" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnEditZakaznik_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Vypůjčky">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="19*"/>
+                        <RowDefinition Height="826*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="660"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="lsvVypujcky" FontSize="20" Grid.Column="0" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Název" Width="110" DisplayMemberBinding="{Binding nazev}"/>
+                                <GridViewColumn Header="Typ" Width="110" DisplayMemberBinding="{Binding typ}"/>
+                                <GridViewColumn Header="Příjmení" Width="120" DisplayMemberBinding="{Binding prijmeni}"/>
+                                <GridViewColumn Header="Datum vypůjčení" Width="155" DisplayMemberBinding="{Binding datumVypujceni, StringFormat={}{0:dd. MM. yyyy}}"/>
+                                <GridViewColumn Header=" Datum vrácení" Width="155" DisplayMemberBinding="{Binding datumVraceni, StringFormat={}{0:dd. MM. yyyy}}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="lsvNastrojeVypujcky" FontSize="20" SelectionChanged="lsvNastroje_SelectionChanged" Grid.Column="0">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID"  Width="110" DisplayMemberBinding="{Binding id}"/>
+                                    <GridViewColumn Header="Název" Width="120" DisplayMemberBinding="{Binding nazev}"/>
+                                    <GridViewColumn Header="Typ" Width="120" DisplayMemberBinding="{Binding typ}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView x:Name="lsvZakazniciVypujcky" FontSize="20" Grid.Column="1" SelectionChanged="lsvZakaznici_SelectionChanged">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID"  Width="80" DisplayMemberBinding="{Binding id}"/>
+                                    <GridViewColumn Header="Jméno" Width="90" DisplayMemberBinding="{Binding jmeno}"/>
+                                    <GridViewColumn Header="Příjmení" Width="120" DisplayMemberBinding="{Binding prijmeni}"/>
+                                    <GridViewColumn Header="Telefon" Width="120" DisplayMemberBinding="{Binding telefon}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Viewbox  Grid.Column="0" Grid.Row="1" Margin="0,0,0,80">
+                            <Calendar x:Name="clrZacatekVypujcky"/>
+                        </Viewbox>
+                        <Viewbox  Grid.Column="1" Grid.Row="1" Margin="0,0,0,80">
+                            <Calendar x:Name="clrKonecVypujcky"/>
+                        </Viewbox>
+                        <Button x:Name="btnPridatVypujcku"  Content="Přidat vypůjčku" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Margin="0,350,0,0" Height="50" Width="300" Click="btnPridatVypujcku_Click"/>
+                        <Button x:Name="btnOdebratVypujcku"  Grid.Column="1" Content="Odebrat vypůjčku" HorizontalAlignment="Center" Margin="0,350,0,0" Grid.Row="1" VerticalAlignment="Top" Height="50" Width="300" Click="btnOdebratVypujcku_Click"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Statistiky vypůjčených nástrojů">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="lsvStatistiky" FontSize="20" Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding typ}"/>
+                                <GridViewColumn Header="Počet" Width="200" DisplayMemberBinding="{Binding pocet}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
